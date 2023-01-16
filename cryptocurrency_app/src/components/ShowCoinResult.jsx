@@ -11,30 +11,43 @@ const ShowCoinResult = (props) => {
       <div className="maincard">
         <span className="cardtitle">當前價格</span>
         <span className="cardsubtitle">
-          As of {new Date().toLocaleDateString()}
+          As of {new Date().toLocaleTimeString()}
         </span>
+        <br />
         <div className="weatherdetails">
           <div className="section1">
             <table>
               <tr>
-                <td>
+                <th></th>
+                <th>
                   <h4>Coin Name</h4>
-                  <tr>
-                    <h4>BTC</h4>
-                  </tr>
-                  <tr>
-                    <h4>ETH</h4>
-                  </tr>
+                </th>
+                <th>
+                  <h4>USD</h4>
+                </th>
+                <th>
+                  <h4>NTD</h4>
+                </th>
+              </tr>
+              <tr>
+                <td>
+                  <img src="public/btc-logo.svg" className="coin-icon" />
                 </td>
                 <td>
-                  <h4>USD</h4>
-                  <tr>
-                    <span>{Math.floor(data.BTC.USD)}</span>
-                  </tr>
-                  <tr>
-                    <span>{Math.floor(data.ETH.USD)}</span>
-                  </tr>
+                  <h4>BTC</h4>
                 </td>
+                <td>{Math.floor(data.BTC.USD).toLocaleString()}</td>
+                <td>{Math.floor(data.BTC.TWD).toLocaleString()}</td>
+              </tr>
+              <tr>
+                <td>
+                  <img src="public/eth-logo.svg" className="coin-icon" />
+                </td>
+                <td>
+                  <h4>ETH</h4>
+                </td>
+                <td>{Math.floor(data.ETH.USD).toLocaleString()}</td>
+                <td>{Math.floor(data.ETH.TWD).toLocaleString()}</td>
               </tr>
             </table>
           </div>

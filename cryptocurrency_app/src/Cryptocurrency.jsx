@@ -11,19 +11,16 @@ const Cryptocurrency = () => {
 
   async function cryptoData(e) {
     e.preventDefault();
-    if (form.currency == "") {
-      alert("Enter the currency");
-    } else {
-      const data = await fetch(
-        `https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=${form.currency}`
-      )
-        .then((res) => res.json())
-        .then((data) => data);
 
-      setCoin({
-        data: data,
-      });
-    }
+    const data = await fetch(
+      `https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=USD,TWD`
+    )
+      .then((res) => res.json())
+      .then((data) => data);
+
+    setCoin({
+      data: data,
+    });
   }
 
   const handleChange = (e) => {
@@ -38,20 +35,13 @@ const Cryptocurrency = () => {
 
   return (
     <div className="weather">
+      <br />
       <span className="title">Cryptocurrency App</span>
       <br />
-      <form>
-        <input
-          type="text"
-          name="currency"
-          placeholder="currency"
-          onChange={(e) => handleChange(e)}
-        />
-        &nbsp; &nbsp; &nbsp;
-        <button className="getweather" onClick={(e) => cryptoData(e)}>
-          Submit
-        </button>
-      </form>
+      <br />
+      <button className="getweather" onClick={(e) => cryptoData(e)}>
+        Reset
+      </button>
 
       {coin.data != undefined ? (
         <div>
